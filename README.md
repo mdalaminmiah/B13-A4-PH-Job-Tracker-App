@@ -52,15 +52,20 @@ const newDiv = document.createElement('div');
 
 Add text or HTML content to the element:
 
-newDiv.textContent = "This is a dynamic div";
-newDiv.innerHTML = "<strong>Hello!</strong> I am dynamic";
+```javascript
+newDiv.textContent = 'This is a dynamic div';
+newDiv.innerHTML = '<strong>Hello!</strong> I am dynamic';
+```
 
 ### Step 3: Add Attributes or Classes
 
 Set an id, class, or custom attributes:
-newDiv.id = "dynamicDiv";
-newDiv.className = "highlighted";
-newDiv.setAttribute("data-info", "dynamic element");
+
+```javascript
+newDiv.id = 'dynamicDiv';
+newDiv.className = 'highlighted';
+newDiv.setAttribute('data-info', 'dynamic element');
+```
 
 ### Step 4: Select a Parent Element
 
@@ -70,31 +75,39 @@ const container = document.getElementById('container');
 ### Step 5: Insert the Element
 
 Insert the element into the DOM:
+
+```javascript
 container.appendChild(newDiv); // Add to the end
 container.prepend(newDiv); // Add to the beginning
 container.insertBefore(newDiv, container.firstChild); // Insert before a specific child
+```
 
 ### Step 6: Add Event Listeners (Optional)
 
 Make the new element interactive:
+
+```javascript
 newDiv.addEventListener('click', () => {
-alert('Dynamic div clicked!');
+    alert('Dynamic div clicked!');
 });
+```
 
 ### Step 7: Full Example
 
 const container = document.getElementById('container');
 
+```javascript
 const newDiv = document.createElement('div');
-newDiv.textContent = "I am dynamic!";
-newDiv.className = "highlighted";
-newDiv.setAttribute("data-info", "dynamic element");
+newDiv.textContent = 'I am dynamic!';
+newDiv.className = 'highlighted';
+newDiv.setAttribute('data-info', 'dynamic element');
 
 container.appendChild(newDiv);
 
 newDiv.addEventListener('click', () => {
-alert('Dynamic div clicked!');
+    alert('Dynamic div clicked!');
 });
+```
 
 ---
 
