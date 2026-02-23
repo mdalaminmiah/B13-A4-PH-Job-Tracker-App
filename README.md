@@ -1,4 +1,4 @@
-## 1️ What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
+## 1️. What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
 
 ---
 
@@ -32,7 +32,7 @@ The `querySelectorAll()` method also uses CSS selectors but returns **all matchi
 
 ---
 
-## 2️ How to Create and Insert a New Element into the DOM
+## 2️. How to Create and Insert a New Element into the DOM
 
 **Answer:**
 
@@ -118,5 +118,69 @@ newDiv.addEventListener('click', () => {
 - Always select a valid parent container.
 - Dynamic elements can have interactivity using event listeners.
 - Any HTML element can be created dynamically: div, span, button, li, etc.
+
+---
+
+## 3. What is Event Bubbling? And how does it work?
+
+---
+
+**Answer:**
+
+`Event Bubbling` is a JavaScript event propagation mechanism where an event starts from the target element and then propagates upward through its parent elements in the DOM hierarchy.
+
+When an event (like `click`) occurs on an element, it does not stop there. Instead, it moves upward to its parent, then to the parent’s parent, and continues until it reaches the `document` object.
+
+`How Event Bubbling Works`
+
+### When a user clicks on an element:
+
+- The event is triggered on the **target element**.
+- The event then propagates to its **parent element**.
+- It continues propagating upward through ancestor elements.
+- Finally, it reaches the root (`document`).
+
+---
+
+**Example**
+
+`HTML`
+
+```javascript
+<div id="parent">
+    <button id="child">Click Me</button>
+</div>
+```
+
+`JavaScript`
+
+```javascript
+document.getElementById('parent').addEventListener('click', function () {
+    console.log('Parent clicked');
+});
+
+document.getElementById('child').addEventListener('click', function () {
+    console.log('Button clicked');
+});
+```
+
+`Output (When Button is Clicked)`
+
+```javascript
+Button clicked
+Parent clicked
+```
+
+**Explanation**
+
+- The event first triggers on the button.
+- Then it bubbles up to the parent div.
+
+### Summary
+
+- Events start at the target element.
+- They propagate upward through parent elements.
+- Bubbling can be stopped using stopPropagation().
+- It is useful for event delegation and efficient event handling.
 
 ---
