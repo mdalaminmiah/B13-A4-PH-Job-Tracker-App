@@ -184,3 +184,59 @@ Parent clicked
 - It is useful for event delegation and efficient event handling.
 
 ---
+
+## 4. What is Event Delegation in JavaScript? Why is it useful?
+
+---
+
+**Answer:**
+`Event Delegation` is a technique in JavaScript where instead of attaching event listeners to multiple child elements, you attach a single event listener to their parent element and handle events using `event bubbling`.
+
+Because events bubble up through the DOM, the parent element can detect and handle events triggered by its child elements.
+
+_How Event Delegation Works_
+
+- Attach an event listener to a `parent element`.
+- When a child element is clicked (or triggered), the event bubbles up to the parent.
+- Inside the event handler, use `event.target` to identify which child element triggered the event.
+
+**Example**
+
+`HTML`
+
+```javascript
+<ul id="itemList">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
+```
+
+`JavaScript (With Event Delegation)`
+
+```javascript
+document.getElementById('itemList').addEventListener('click', function (event) {
+    if (event.target.tagName === 'LI') {
+        console.log('Clicked:', event.target.textContent);
+    }
+});
+```
+
+**Why Event Delegation is Useful**
+
+- Improves Performance:
+  _Instead of adding event listeners to many child elements, you use only one listener on the parent._
+- Handles Dynamic Elements:
+  _If new child elements are added later using JavaScript, they automatically work without adding new event listeners._
+- Cleaner and Maintainable Code:
+  _Less repetitive code and easier event management._
+
+**Summary**
+
+- Event Delegation uses event bubbling.
+- A single parent event listener handles child events.
+- It improves performance.
+- It works with dynamically added elements.
+- It keeps code clean and scalable.
+
+---
