@@ -159,7 +159,11 @@ function updateUI() {
                         <h3 class="text-xl font-bold text-[#002D5B] mb-1">${job.company}</h3>
                         <p class="text-gray-500 font-semibold text-[15px] mb-4">${job.role}</p>
                         <div class="text-[13px] text-gray-400 mb-6 font-medium">${job.meta}</div>
-                        <span class="inline-block px-3 py-1.5 bg-[#EFF6FF] text-[#1E40AF] text-[11px] font-bold rounded uppercase mb-6 tracking-wider">
+                        <span class="inline-block px-3 py-1.5 text-[11px] font-bold rounded uppercase mb-6 tracking-wider shadow-sm 
+                            ${job.status === 'interview' 
+                                ? 'bg-linear-to-r from-emerald-500 to-teal-600  text-white' 
+                                : job.status==='rejected' ?  'bg-linear-to-r from-rose-500 to-orange-600  text-white'
+                                : 'bg-[#EFF6FF] text-[#000000]'}">
                             ${job.status === 'none' ? 'NOT APPLIED' : job.status}
                         </span>
                         <p class="text-gray-600 text-[14px] leading-relaxed mb-8 max-w-4xl">${job.desc}</p>
@@ -178,7 +182,7 @@ function updateUI() {
                     </div>`,
         ).join('');
 
-/** 
+        /** 
  * Render Job Cards Start
  * */ 
 }
