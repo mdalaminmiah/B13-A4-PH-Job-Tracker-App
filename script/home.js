@@ -96,8 +96,14 @@ function updateUI() {
         jobData.filter((j) => j.status === 'interview').length;
     document.getElementById('rejected-count').innerText =
         jobData.filter((j) => j.status === 'rejected').length;
-    document.getElementById('tab-count-text').innerText =
-        `${filteredJobs.length} jobs`;
+
+    if(currentFilter === 'all' ){
+        document.getElementById('tab-count-text').innerText = `${filteredJobs.length} jobs`;
+    }
+    else {
+        document.getElementById('tab-count-text').innerText = `${filteredJobs.length} of ${jobData.length} jobs`;
+    }
+
 
     // Update Tab Styles
     ['all', 'interview', 'rejected'].forEach((type) => {
