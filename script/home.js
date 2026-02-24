@@ -89,7 +89,9 @@ function updateUI() {
             currentFilter === 'all' || j.status === currentFilter,
     );
 
-    // Update Dashboard Counters
+/** 
+ * Update Dashboard Count Start
+ * */ 
     document.getElementById('total-count').innerText =
         jobData.length;
     document.getElementById('interview-count').innerText =
@@ -104,8 +106,13 @@ function updateUI() {
         document.getElementById('tab-count-text').innerText = `${filteredJobs.length} of ${jobData.length} jobs`;
     }
 
+/** 
+ * Update Dashboard Count End
+ * */ 
 
-    // Update Tab Styles
+/** 
+ * Update Tab Style Start
+ * */ 
     ['all', 'interview', 'rejected'].forEach((type) => {
         const btn = document.getElementById(`btn-${type}`);
         if (currentFilter === type) {
@@ -116,8 +123,13 @@ function updateUI() {
                 'px-5 py-2 bg-white text-gray-400 border border-gray-100 rounded-md text-[13px] font-bold hover:bg-gray-50';
         }
     });
+/** 
+ * Update Tab Style End
+ * */ 
 
-    // Handle Empty State
+/** 
+ * Handle Empty State Start
+ * */ 
     if (filteredJobs.length === 0) {
         container.innerHTML = `
         <div class="flex flex-col items-center justify-center py-20 bg-white rounded-xl border border-gray-100 shadow-sm">
@@ -127,40 +139,48 @@ function updateUI() {
         </div>`;
         return;
     }
+/** 
+ * Handle Empty State End
+ * */ 
 
-    // Render Job Cards
+/** 
+ * Render Job Cards Start
+ * */ 
+
     container.innerHTML = filteredJobs
         .map(
             (job) => `
-    <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-8 relative transition-all hover:shadow-md">
-        <button onclick="deleteJob(${job.id})" class="absolute top-8 right-8 text-gray-300 hover:text-red-500 transition-colors">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"/>
-            </svg>
-        </button>
-        <h3 class="text-xl font-bold text-[#002D5B] mb-1">${job.company}</h3>
-        <p class="text-gray-500 font-semibold text-[15px] mb-4">${job.role}</p>
-        <div class="text-[13px] text-gray-400 mb-6 font-medium">${job.meta}</div>
-        <span class="inline-block px-3 py-1.5 bg-[#EFF6FF] text-[#1E40AF] text-[11px] font-bold rounded uppercase mb-6 tracking-wider">
-            ${job.status === 'none' ? 'NOT APPLIED' : job.status}
-        </span>
-        <p class="text-gray-600 text-[14px] leading-relaxed mb-8 max-w-4xl">${job.desc}</p>
-        <div class="flex items-center gap-3">
-            <button onclick="toggleStatus(${job.id}, 'interview')" 
-                class="px-6 py-2 border rounded-md text-[11px] font-bold uppercase tracking-widest transition-all
-                ${job.status === 'interview' ? 'bg-[#10B981] text-white border-[#10B981]' : 'border-[#10B981] text-[#10B981] hover:bg-emerald-50'}">
-                INTERVIEW
-            </button>
-            <button onclick="toggleStatus(${job.id}, 'rejected')" 
-                class="px-6 py-2 border rounded-md text-[11px] font-bold uppercase tracking-widest transition-all
-                ${job.status === 'rejected' ? 'bg-[#EF4444] text-white border-[#EF4444]' : 'border-[#EF4444] text-[#EF4444] hover:bg-red-50'}">
-                REJECTED
-            </button>
-        </div>
-    </div>
-`,
-        )
-        .join('');
+                    <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-8 relative transition-all hover:shadow-md">
+                        <button onclick="deleteJob(${job.id})" class="absolute top-8 right-8 text-gray-300 hover:text-red-500 transition-colors">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"/>
+                            </svg>
+                        </button>
+                        <h3 class="text-xl font-bold text-[#002D5B] mb-1">${job.company}</h3>
+                        <p class="text-gray-500 font-semibold text-[15px] mb-4">${job.role}</p>
+                        <div class="text-[13px] text-gray-400 mb-6 font-medium">${job.meta}</div>
+                        <span class="inline-block px-3 py-1.5 bg-[#EFF6FF] text-[#1E40AF] text-[11px] font-bold rounded uppercase mb-6 tracking-wider">
+                            ${job.status === 'none' ? 'NOT APPLIED' : job.status}
+                        </span>
+                        <p class="text-gray-600 text-[14px] leading-relaxed mb-8 max-w-4xl">${job.desc}</p>
+                        <div class="flex items-center gap-3">
+                            <button onclick="toggleStatus(${job.id}, 'interview')" 
+                                class="px-6 py-2 border rounded-md text-[11px] font-bold uppercase tracking-widest transition-all
+                                ${job.status === 'interview' ? 'bg-[#10B981] text-white border-[#10B981]' : 'border-[#10B981] text-[#10B981] hover:bg-emerald-50'}">
+                                INTERVIEW
+                            </button>
+                            <button onclick="toggleStatus(${job.id}, 'rejected')" 
+                                class="px-6 py-2 border rounded-md text-[11px] font-bold uppercase tracking-widest transition-all
+                                ${job.status === 'rejected' ? 'bg-[#EF4444] text-white border-[#EF4444]' : 'border-[#EF4444] text-[#EF4444] hover:bg-red-50'}">
+                                REJECTED
+                            </button>
+                        </div>
+                    </div>`,
+        ).join('');
+
+/** 
+ * Render Job Cards Start
+ * */ 
 }
 
 updateUI();
